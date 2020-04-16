@@ -1,68 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
-    background: #f6f5fa;
-    color: #000;
-    font-family: sans-serif;
+    font-family: 'Roboto', sans-serif;
+    background-image: linear-gradient(120deg, #101f2e, #172c42);
+    color: #fff;
+    /* Push to bottom */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100vh;
 }
 
-.title {
-    font-size: 40px;
-    text-align: center;
-    margin-top: 60px;
+header {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.subtitle {
-    font-size: 25px;
-    text-align: center;
-    padding-top: 20px;
+header h1 {
+    font-size: 60px;
 }
 
-#zipForm {
-    max-width: 900px;
-    margin: 0 auto;
-    margin-top: 50px;
+.counters i {
+    color: lightskyblue;
+    margin-bottom: 5px;
 }
 
-input {
-    display: block;
-    margin-bottom: 0px;
-    border: solid 1px #ccc;
-    box-sizing: border-box;
-    width: 100%;
-    font-size: 22px;
-    line-height: 30px;
-    padding: 10px;
-    text-align: center;
+.counters .counter {
+    font-size: 45px;
+    margin: 10px 0;
 }
 
 .container {
-    max-width: 900px;
-    margin: 0 auto;
+    display: flex;
+    height: 300px;
 }
 
-.container ul {
-    list-style: none;
-}
-
-.message-header p {
-    font-size: 30px;
-    padding-bottom: 10px;
-    padding-top: 20px;
-}
-
-.message-body li {
-    font-size: 20px;
-    padding-bottom: 10px;
-}
-
-.is-danger {
-    font-size: 25px;
-    color: red;
+.container div {
+    flex: 1;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 50px;
+}
+
+.container-box:nth-child(1n) {
+    background: rgb(16, 31, 46);
+}
+
+.container-box:nth-child(2n) {
+    background: rgb(18, 34, 51);
+}
+
+.container-box:nth-child(3n) {
+    background: rgb(21, 38, 56);
+}
+
+.container-box:nth-child(4n) {
+    background: rgb(23, 44, 66);
 }

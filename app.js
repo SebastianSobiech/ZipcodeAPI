@@ -1,39 +1,21 @@
-document.querySelector('#zipForm').addEventListener('submit', getLocationInfo);
+const counter = document.querySelectorAll('.counter');
+const speed = 200;
 
-function getLocationInfo(e) {
-    const zip = document.querySelector('.zip').value;
+counter.forEach(counter => {
+    const updateCount = () => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
 
-    fetch(`http://api.zippopotam.us/pl/${zip}`)
-        .then(response => {
-            if (response.status !== 200) {
-                document.querySelector('#output').innerHTML =
-                    `<article class="message message-body is-danger">Zły kod pocztowy</article>`;
-                throw Error(response.statusText);
-            } else {
-                return response.json();
-            }
-        })
-        .then(data => {
-            let output = '';
-            data.places.forEach(place => {
-                output += `
-                <article class="message is-primary">
-                  <div class="message-header">
-                    <p>Location Info</p>
-                  </div>
-                  <div class="message-body">
-                    <ul>
-                      <li><strong>City: </strong>${place["place name"]}</li>
-                      <li><strong>State: </strong>${place["state"]}</li>
-                      <li><strong>Longitude: </strong>${place["longitude"]}</li>
-                      <li><strong>Latitude: </strong>${place["latitude"]}</li>
-                    </ul>
-                  </div>
-                </article>
-              `;
-            })
-            document.querySelector('#output').innerHTML = output;
-        })
-        .catch(err => console.log(err));
-    e.preventDefault();
-}
+        const inc = target / speed;
+
+        if (count < target) {
+            counter.innerText = Math.ceil(count + inc);
+            setTimeout(updateCount, 1);
+        } else {
+            count.innerText = target;
+        }
+
+    }
+
+    updateCount();
+})
